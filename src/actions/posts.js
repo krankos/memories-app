@@ -13,3 +13,12 @@ export const getPosts = () => async(dispatch) => {
     //const action = { type: "FETCH_ALL", payload: [] };
     //dispatch(action);
 };
+export const createPost = (newPost) => async(dispatch) => {
+    try {
+        const { data } = await api.createPost(newPost); // data is the new post
+
+        dispatch({ type: "CREATE_POST", payload: data }); // payload is the new post data (id, title, content)
+    } catch (error) {
+        console.log(error.message); // "Network Error"
+    }
+};
